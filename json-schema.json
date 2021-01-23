@@ -422,6 +422,21 @@
         "type": {
           "type": "string",
           "default": "https://schema.oparl.org/1.1/LegislativeTerm"
+        },
+        "body": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
         }
       }
     },
@@ -437,6 +452,60 @@
         "type": {
           "type": "string",
           "default": "https://schema.oparl.org/1.1/Organization"
+        },
+        "body": {
+          "type": "string",
+          "format": "uri"
+        },
+        "membership": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "meeting": {
+          "type": "string",
+          "format": "uri"
+        },
+        "consultation": {
+          "type": "string",
+          "format": "uri"
+        },
+        "post": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subOrganizationOf": {
+          "type": "string",
+          "format": "uri"
+        },
+        "organizationType": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "externalBody": {
+          "type": "string",
+          "format": "uri"
         }
       }
     },

@@ -80,7 +80,7 @@ EOF;
         $serializer = $this->getSerializer();
 
         /** @var Body $body */
-        $body = $serializer->deserialize($content, Meeting::class, 'json');
+        $body = $serializer->deserialize($content, Body::class, 'json');
 
         self::assertEquals('https://oparl.example.org/body/0', $body->getId());
         self::assertEquals('https://schema.oparl.org/1.1/Body', $body->getType());

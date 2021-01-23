@@ -17,6 +17,18 @@ class LegislativeTerm
      */
     protected $type = 'https://schema.oparl.org/1.1/LegislativeTerm';
     /**
+     * @var string|null
+     */
+    protected $body;
+    /**
+     * @var \DateTime
+     */
+    protected $startDate;
+    /**
+     * @var \DateTime
+     */
+    protected $endDate;
+    /**
      * Every object *must* carry a URL as ID.
      *
      * @var string
@@ -65,6 +77,42 @@ class LegislativeTerm
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getBody(): ?string
+    {
+        return $this->body;
+    }
+
+    public function setBody(?string $body): self
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    public function getStartDate(): \DateTime
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(\DateTime $startDate): self
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): \DateTime
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTime $endDate): self
+    {
+        $this->endDate = $endDate;
 
         return $this;
     }

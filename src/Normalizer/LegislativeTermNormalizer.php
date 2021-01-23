@@ -47,6 +47,23 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }
+        if (\array_key_exists('body', $data) && $data['body'] !== null) {
+            $value = $data['body'];
+            if (is_string($data['body'])) {
+                $value = $data['body'];
+            } elseif (is_null($data['body'])) {
+                $value = $data['body'];
+            }
+            $object->setBody($value);
+        } elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+            $object->setBody(null);
+        }
+        if (\array_key_exists('startDate', $data)) {
+            $object->setStartDate(\DateTime::createFromFormat('Y-m-d', $data['startDate'])->setTime(0, 0, 0));
+        }
+        if (\array_key_exists('endDate', $data)) {
+            $object->setEndDate(\DateTime::createFromFormat('Y-m-d', $data['endDate'])->setTime(0, 0, 0));
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }
@@ -54,42 +71,42 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setName($data['name']);
         }
         if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
-            $value = $data['shortName'];
+            $value_1 = $data['shortName'];
             if (is_string($data['shortName'])) {
-                $value = $data['shortName'];
+                $value_1 = $data['shortName'];
             } elseif (is_null($data['shortName'])) {
-                $value = $data['shortName'];
+                $value_1 = $data['shortName'];
             }
-            $object->setShortName($value);
+            $object->setShortName($value_1);
         } elseif (\array_key_exists('shortName', $data) && $data['shortName'] === null) {
             $object->setShortName(null);
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
-            $value_1 = $data['license'];
+            $value_2 = $data['license'];
             if (is_string($data['license'])) {
-                $value_1 = $data['license'];
+                $value_2 = $data['license'];
             } elseif (is_null($data['license'])) {
-                $value_1 = $data['license'];
+                $value_2 = $data['license'];
             }
-            $object->setLicense($value_1);
+            $object->setLicense($value_2);
         } elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
         }
         if (\array_key_exists('keyword', $data)) {
             $values = [];
-            foreach ($data['keyword'] as $value_2) {
-                $values[] = $value_2;
+            foreach ($data['keyword'] as $value_3) {
+                $values[] = $value_3;
             }
             $object->setKeyword($values);
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
-            $value_3 = $data['web'];
+            $value_4 = $data['web'];
             if (is_string($data['web'])) {
-                $value_3 = $data['web'];
+                $value_4 = $data['web'];
             } elseif (is_null($data['web'])) {
-                $value_3 = $data['web'];
+                $value_4 = $data['web'];
             }
-            $object->setWeb($value_3);
+            $object->setWeb($value_4);
         } elseif (\array_key_exists('web', $data) && $data['web'] === null) {
             $object->setWeb(null);
         }
@@ -112,40 +129,53 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
+        $value = $object->getBody();
+        if (is_string($object->getBody())) {
+            $value = $object->getBody();
+        } elseif (is_null($object->getBody())) {
+            $value = $object->getBody();
+        }
+        $data['body'] = $value;
+        if (null !== $object->getStartDate()) {
+            $data['startDate'] = $object->getStartDate()->format('Y-m-d');
+        }
+        if (null !== $object->getEndDate()) {
+            $data['endDate'] = $object->getEndDate()->format('Y-m-d');
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $value = $object->getShortName();
+        $value_1 = $object->getShortName();
         if (is_string($object->getShortName())) {
-            $value = $object->getShortName();
+            $value_1 = $object->getShortName();
         } elseif (is_null($object->getShortName())) {
-            $value = $object->getShortName();
+            $value_1 = $object->getShortName();
         }
-        $data['shortName'] = $value;
-        $value_1 = $object->getLicense();
+        $data['shortName'] = $value_1;
+        $value_2 = $object->getLicense();
         if (is_string($object->getLicense())) {
-            $value_1 = $object->getLicense();
+            $value_2 = $object->getLicense();
         } elseif (is_null($object->getLicense())) {
-            $value_1 = $object->getLicense();
+            $value_2 = $object->getLicense();
         }
-        $data['license'] = $value_1;
+        $data['license'] = $value_2;
         if (null !== $object->getKeyword()) {
             $values = [];
-            foreach ($object->getKeyword() as $value_2) {
-                $values[] = $value_2;
+            foreach ($object->getKeyword() as $value_3) {
+                $values[] = $value_3;
             }
             $data['keyword'] = $values;
         }
-        $value_3 = $object->getWeb();
+        $value_4 = $object->getWeb();
         if (is_string($object->getWeb())) {
-            $value_3 = $object->getWeb();
+            $value_4 = $object->getWeb();
         } elseif (is_null($object->getWeb())) {
-            $value_3 = $object->getWeb();
+            $value_4 = $object->getWeb();
         }
-        $data['web'] = $value_3;
+        $data['web'] = $value_4;
         if (null !== $object->getDeleted()) {
             $data['deleted'] = $object->getDeleted();
         }

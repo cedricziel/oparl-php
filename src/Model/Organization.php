@@ -17,6 +17,58 @@ class Organization
      */
     protected $type = 'https://schema.oparl.org/1.1/Organization';
     /**
+     * @var string
+     */
+    protected $body;
+    /**
+     * @var string[]
+     */
+    protected $membership;
+    /**
+     * @var string
+     */
+    protected $meeting;
+    /**
+     * @var string
+     */
+    protected $consultation;
+    /**
+     * @var string[]
+     */
+    protected $post;
+    /**
+     * @var string
+     */
+    protected $subOrganizationOf;
+    /**
+     * @var string
+     */
+    protected $organizationType;
+    /**
+     * @var string
+     */
+    protected $classification;
+    /**
+     * @var \DateTime
+     */
+    protected $startDate;
+    /**
+     * @var \DateTime
+     */
+    protected $endDate;
+    /**
+     * @var string
+     */
+    protected $website;
+    /**
+     * @var Location
+     */
+    protected $location;
+    /**
+     * @var string
+     */
+    protected $externalBody;
+    /**
      * Every object *must* carry a URL as ID.
      *
      * @var string
@@ -65,6 +117,174 @@ class Organization
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getBody(): string
+    {
+        return $this->body;
+    }
+
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getMembership(): array
+    {
+        return $this->membership;
+    }
+
+    /**
+     * @param string[] $membership
+     */
+    public function setMembership(array $membership): self
+    {
+        $this->membership = $membership;
+
+        return $this;
+    }
+
+    public function getMeeting(): string
+    {
+        return $this->meeting;
+    }
+
+    public function setMeeting(string $meeting): self
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    public function getConsultation(): string
+    {
+        return $this->consultation;
+    }
+
+    public function setConsultation(string $consultation): self
+    {
+        $this->consultation = $consultation;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getPost(): array
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param string[] $post
+     */
+    public function setPost(array $post): self
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    public function getSubOrganizationOf(): string
+    {
+        return $this->subOrganizationOf;
+    }
+
+    public function setSubOrganizationOf(string $subOrganizationOf): self
+    {
+        $this->subOrganizationOf = $subOrganizationOf;
+
+        return $this;
+    }
+
+    public function getOrganizationType(): string
+    {
+        return $this->organizationType;
+    }
+
+    public function setOrganizationType(string $organizationType): self
+    {
+        $this->organizationType = $organizationType;
+
+        return $this;
+    }
+
+    public function getClassification(): string
+    {
+        return $this->classification;
+    }
+
+    public function setClassification(string $classification): self
+    {
+        $this->classification = $classification;
+
+        return $this;
+    }
+
+    public function getStartDate(): \DateTime
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(\DateTime $startDate): self
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): \DateTime
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTime $endDate): self
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function getWebsite(): string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    public function getLocation(): Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(Location $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function getExternalBody(): string
+    {
+        return $this->externalBody;
+    }
+
+    public function setExternalBody(string $externalBody): self
+    {
+        $this->externalBody = $externalBody;
 
         return $this;
     }
