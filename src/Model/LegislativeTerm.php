@@ -13,17 +13,17 @@ namespace OParl\Model;
 class LegislativeTerm
 {
     /**
-     * @var string
-     */
-    protected $type = 'https://schema.oparl.org/1.1/LegislativeTerm';
-    /**
      * @var string|null
      */
     protected $body;
     /**
      * @var \DateTime
      */
-    protected $startDate;
+    protected $created;
+    /**
+     * @var bool
+     */
+    protected $deleted = false;
     /**
      * @var \DateTime
      */
@@ -35,6 +35,18 @@ class LegislativeTerm
      */
     protected $id;
     /**
+     * @var string[]
+     */
+    protected $keyword;
+    /**
+     * @var string|null
+     */
+    protected $license;
+    /**
+     * @var \DateTime
+     */
+    protected $modified;
+    /**
      * Every object *must* carry a name.
      *
      * @var string
@@ -45,45 +57,90 @@ class LegislativeTerm
      */
     protected $shortName;
     /**
-     * @var string|null
+     * @var \DateTime
      */
-    protected $license;
+    protected $startDate;
     /**
-     * @var string[]
+     * @var string
      */
-    protected $keyword;
+    protected $type = 'https://schema.oparl.org/1.1/LegislativeTerm';
     /**
      * @var string|null
      */
     protected $web;
+
+    public function getBody(): ?string
+    {
+        return $this->body;
+    }
+
+    public function getCreated(): \DateTime
+    {
+        return $this->created;
+    }
+
+    public function getDeleted(): bool
+    {
+        return $this->deleted;
+    }
+
+    public function getEndDate(): \DateTime
+    {
+        return $this->endDate;
+    }
+
     /**
-     * @var bool
+     * Every object *must* carry a URL as ID.
      */
-    protected $deleted = false;
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     /**
-     * @var \DateTime
+     * @return string[]
      */
-    protected $created;
+    public function getKeyword(): array
+    {
+        return $this->keyword;
+    }
+
+    public function getLicense(): ?string
+    {
+        return $this->license;
+    }
+
+    public function getModified(): \DateTime
+    {
+        return $this->modified;
+    }
+
     /**
-     * @var \DateTime
+     * Every object *must* carry a name.
      */
-    protected $modified;
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getShortName(): ?string
+    {
+        return $this->shortName;
+    }
+
+    public function getStartDate(): \DateTime
+    {
+        return $this->startDate;
+    }
 
     public function getType(): string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function getWeb(): ?string
     {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getBody(): ?string
-    {
-        return $this->body;
+        return $this->web;
     }
 
     public function setBody(?string $body): self
@@ -93,21 +150,18 @@ class LegislativeTerm
         return $this;
     }
 
-    public function getStartDate(): \DateTime
+    public function setCreated(\DateTime $created): self
     {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTime $startDate): self
-    {
-        $this->startDate = $startDate;
+        $this->created = $created;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTime
+    public function setDeleted(bool $deleted): self
     {
-        return $this->endDate;
+        $this->deleted = $deleted;
+
+        return $this;
     }
 
     public function setEndDate(\DateTime $endDate): self
@@ -115,14 +169,6 @@ class LegislativeTerm
         $this->endDate = $endDate;
 
         return $this;
-    }
-
-    /**
-     * Every object *must* carry a URL as ID.
-     */
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     /**
@@ -136,11 +182,27 @@ class LegislativeTerm
     }
 
     /**
-     * Every object *must* carry a name.
+     * @param string[] $keyword
      */
-    public function getName(): string
+    public function setKeyword(array $keyword): self
     {
-        return $this->name;
+        $this->keyword = $keyword;
+
+        return $this;
+    }
+
+    public function setLicense(?string $license): self
+    {
+        $this->license = $license;
+
+        return $this;
+    }
+
+    public function setModified(\DateTime $modified): self
+    {
+        $this->modified = $modified;
+
+        return $this;
     }
 
     /**
@@ -153,11 +215,6 @@ class LegislativeTerm
         return $this;
     }
 
-    public function getShortName(): ?string
-    {
-        return $this->shortName;
-    }
-
     public function setShortName(?string $shortName): self
     {
         $this->shortName = $shortName;
@@ -165,80 +222,23 @@ class LegislativeTerm
         return $this;
     }
 
-    public function getLicense(): ?string
+    public function setStartDate(\DateTime $startDate): self
     {
-        return $this->license;
-    }
-
-    public function setLicense(?string $license): self
-    {
-        $this->license = $license;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getKeyword(): array
+    public function setType(string $type): self
     {
-        return $this->keyword;
-    }
-
-    /**
-     * @param string[] $keyword
-     */
-    public function setKeyword(array $keyword): self
-    {
-        $this->keyword = $keyword;
+        $this->type = $type;
 
         return $this;
-    }
-
-    public function getWeb(): ?string
-    {
-        return $this->web;
     }
 
     public function setWeb(?string $web): self
     {
         $this->web = $web;
-
-        return $this;
-    }
-
-    public function getDeleted(): bool
-    {
-        return $this->deleted;
-    }
-
-    public function setDeleted(bool $deleted): self
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    public function getCreated(): \DateTime
-    {
-        return $this->created;
-    }
-
-    public function setCreated(\DateTime $created): self
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    public function getModified(): \DateTime
-    {
-        return $this->modified;
-    }
-
-    public function setModified(\DateTime $modified): self
-    {
-        $this->modified = $modified;
 
         return $this;
     }

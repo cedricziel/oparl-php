@@ -15,55 +15,27 @@ class Organization
     /**
      * @var string
      */
-    protected $type = 'https://schema.oparl.org/1.1/Organization';
-    /**
-     * @var string
-     */
     protected $body;
-    /**
-     * @var string[]
-     */
-    protected $membership;
-    /**
-     * @var string
-     */
-    protected $meeting;
-    /**
-     * @var string
-     */
-    protected $consultation;
-    /**
-     * @var string[]
-     */
-    protected $post;
-    /**
-     * @var string
-     */
-    protected $subOrganizationOf;
-    /**
-     * @var string
-     */
-    protected $organizationType;
     /**
      * @var string
      */
     protected $classification;
     /**
+     * @var string
+     */
+    protected $consultation;
+    /**
      * @var \DateTime
      */
-    protected $startDate;
+    protected $created;
+    /**
+     * @var bool
+     */
+    protected $deleted = false;
     /**
      * @var \DateTime
      */
     protected $endDate;
-    /**
-     * @var string
-     */
-    protected $website;
-    /**
-     * @var Location
-     */
-    protected $location;
     /**
      * @var string
      */
@@ -75,62 +47,132 @@ class Organization
      */
     protected $id;
     /**
-     * Every object *must* carry a name.
-     *
-     * @var string
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $shortName;
-    /**
-     * @var string|null
-     */
-    protected $license;
-    /**
      * @var string[]
      */
     protected $keyword;
     /**
      * @var string|null
      */
-    protected $web;
+    protected $license;
     /**
-     * @var bool
+     * @var Location
      */
-    protected $deleted = false;
+    protected $location;
     /**
-     * @var \DateTime
+     * @var string
      */
-    protected $created;
+    protected $meeting;
+    /**
+     * @var string[]
+     */
+    protected $membership;
     /**
      * @var \DateTime
      */
     protected $modified;
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
+    /**
+     * Every object *must* carry a name.
+     *
+     * @var string
+     */
+    protected $name;
+    /**
+     * @var string
+     */
+    protected $organizationType;
+    /**
+     * @var string[]
+     */
+    protected $post;
+    /**
+     * @var string|null
+     */
+    protected $shortName;
+    /**
+     * @var \DateTime
+     */
+    protected $startDate;
+    /**
+     * @var string
+     */
+    protected $subOrganizationOf;
+    /**
+     * @var string
+     */
+    protected $type = 'https://schema.oparl.org/1.1/Organization';
+    /**
+     * @var string|null
+     */
+    protected $web;
+    /**
+     * @var string
+     */
+    protected $website;
 
     public function getBody(): string
     {
         return $this->body;
     }
 
-    public function setBody(string $body): self
+    public function getClassification(): string
     {
-        $this->body = $body;
+        return $this->classification;
+    }
 
-        return $this;
+    public function getConsultation(): string
+    {
+        return $this->consultation;
+    }
+
+    public function getCreated(): \DateTime
+    {
+        return $this->created;
+    }
+
+    public function getDeleted(): bool
+    {
+        return $this->deleted;
+    }
+
+    public function getEndDate(): \DateTime
+    {
+        return $this->endDate;
+    }
+
+    public function getExternalBody(): string
+    {
+        return $this->externalBody;
+    }
+
+    /**
+     * Every object *must* carry a URL as ID.
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getKeyword(): array
+    {
+        return $this->keyword;
+    }
+
+    public function getLicense(): ?string
+    {
+        return $this->license;
+    }
+
+    public function getLocation(): Location
+    {
+        return $this->location;
+    }
+
+    public function getMeeting(): string
+    {
+        return $this->meeting;
     }
 
     /**
@@ -141,38 +183,22 @@ class Organization
         return $this->membership;
     }
 
+    public function getModified(): \DateTime
+    {
+        return $this->modified;
+    }
+
     /**
-     * @param string[] $membership
+     * Every object *must* carry a name.
      */
-    public function setMembership(array $membership): self
+    public function getName(): string
     {
-        $this->membership = $membership;
-
-        return $this;
+        return $this->name;
     }
 
-    public function getMeeting(): string
+    public function getOrganizationType(): string
     {
-        return $this->meeting;
-    }
-
-    public function setMeeting(string $meeting): self
-    {
-        $this->meeting = $meeting;
-
-        return $this;
-    }
-
-    public function getConsultation(): string
-    {
-        return $this->consultation;
-    }
-
-    public function setConsultation(string $consultation): self
-    {
-        $this->consultation = $consultation;
-
-        return $this;
+        return $this->organizationType;
     }
 
     /**
@@ -183,14 +209,14 @@ class Organization
         return $this->post;
     }
 
-    /**
-     * @param string[] $post
-     */
-    public function setPost(array $post): self
+    public function getShortName(): ?string
     {
-        $this->post = $post;
+        return $this->shortName;
+    }
 
-        return $this;
+    public function getStartDate(): \DateTime
+    {
+        return $this->startDate;
     }
 
     public function getSubOrganizationOf(): string
@@ -198,28 +224,26 @@ class Organization
         return $this->subOrganizationOf;
     }
 
-    public function setSubOrganizationOf(string $subOrganizationOf): self
+    public function getType(): string
     {
-        $this->subOrganizationOf = $subOrganizationOf;
+        return $this->type;
+    }
+
+    public function getWeb(): ?string
+    {
+        return $this->web;
+    }
+
+    public function getWebsite(): string
+    {
+        return $this->website;
+    }
+
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
 
         return $this;
-    }
-
-    public function getOrganizationType(): string
-    {
-        return $this->organizationType;
-    }
-
-    public function setOrganizationType(string $organizationType): self
-    {
-        $this->organizationType = $organizationType;
-
-        return $this;
-    }
-
-    public function getClassification(): string
-    {
-        return $this->classification;
     }
 
     public function setClassification(string $classification): self
@@ -229,21 +253,25 @@ class Organization
         return $this;
     }
 
-    public function getStartDate(): \DateTime
+    public function setConsultation(string $consultation): self
     {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTime $startDate): self
-    {
-        $this->startDate = $startDate;
+        $this->consultation = $consultation;
 
         return $this;
     }
 
-    public function getEndDate(): \DateTime
+    public function setCreated(\DateTime $created): self
     {
-        return $this->endDate;
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function setDeleted(bool $deleted): self
+    {
+        $this->deleted = $deleted;
+
+        return $this;
     }
 
     public function setEndDate(\DateTime $endDate): self
@@ -253,48 +281,11 @@ class Organization
         return $this;
     }
 
-    public function getWebsite(): string
-    {
-        return $this->website;
-    }
-
-    public function setWebsite(string $website): self
-    {
-        $this->website = $website;
-
-        return $this;
-    }
-
-    public function getLocation(): Location
-    {
-        return $this->location;
-    }
-
-    public function setLocation(Location $location): self
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    public function getExternalBody(): string
-    {
-        return $this->externalBody;
-    }
-
     public function setExternalBody(string $externalBody): self
     {
         $this->externalBody = $externalBody;
 
         return $this;
-    }
-
-    /**
-     * Every object *must* carry a URL as ID.
-     */
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     /**
@@ -308,11 +299,51 @@ class Organization
     }
 
     /**
-     * Every object *must* carry a name.
+     * @param string[] $keyword
      */
-    public function getName(): string
+    public function setKeyword(array $keyword): self
     {
-        return $this->name;
+        $this->keyword = $keyword;
+
+        return $this;
+    }
+
+    public function setLicense(?string $license): self
+    {
+        $this->license = $license;
+
+        return $this;
+    }
+
+    public function setLocation(Location $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function setMeeting(string $meeting): self
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * @param string[] $membership
+     */
+    public function setMembership(array $membership): self
+    {
+        $this->membership = $membership;
+
+        return $this;
+    }
+
+    public function setModified(\DateTime $modified): self
+    {
+        $this->modified = $modified;
+
+        return $this;
     }
 
     /**
@@ -325,9 +356,21 @@ class Organization
         return $this;
     }
 
-    public function getShortName(): ?string
+    public function setOrganizationType(string $organizationType): self
     {
-        return $this->shortName;
+        $this->organizationType = $organizationType;
+
+        return $this;
+    }
+
+    /**
+     * @param string[] $post
+     */
+    public function setPost(array $post): self
+    {
+        $this->post = $post;
+
+        return $this;
     }
 
     public function setShortName(?string $shortName): self
@@ -337,39 +380,25 @@ class Organization
         return $this;
     }
 
-    public function getLicense(): ?string
+    public function setStartDate(\DateTime $startDate): self
     {
-        return $this->license;
-    }
-
-    public function setLicense(?string $license): self
-    {
-        $this->license = $license;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getKeyword(): array
+    public function setSubOrganizationOf(string $subOrganizationOf): self
     {
-        return $this->keyword;
-    }
-
-    /**
-     * @param string[] $keyword
-     */
-    public function setKeyword(array $keyword): self
-    {
-        $this->keyword = $keyword;
+        $this->subOrganizationOf = $subOrganizationOf;
 
         return $this;
     }
 
-    public function getWeb(): ?string
+    public function setType(string $type): self
     {
-        return $this->web;
+        $this->type = $type;
+
+        return $this;
     }
 
     public function setWeb(?string $web): self
@@ -379,38 +408,9 @@ class Organization
         return $this;
     }
 
-    public function getDeleted(): bool
+    public function setWebsite(string $website): self
     {
-        return $this->deleted;
-    }
-
-    public function setDeleted(bool $deleted): self
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    public function getCreated(): \DateTime
-    {
-        return $this->created;
-    }
-
-    public function setCreated(\DateTime $created): self
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    public function getModified(): \DateTime
-    {
-        return $this->modified;
-    }
-
-    public function setModified(\DateTime $modified): self
-    {
-        $this->modified = $modified;
+        $this->website = $website;
 
         return $this;
     }

@@ -6,5 +6,6 @@ return [
     'namespace' => 'OParl',
     'directory' => __DIR__ . '/src',
     'use-fixer' => true,
+    'fixer-config-file' => '.php_cs.dist',
     'clean-generated' => true
 ];

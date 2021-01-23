@@ -17,13 +17,13 @@ class OrganizationObjectList
      */
     protected $data;
     /**
-     * @var ObjectListPagination
-     */
-    protected $pagination;
-    /**
      * @var ObjectListLinks
      */
     protected $links;
+    /**
+     * @var ObjectListPagination
+     */
+    protected $pagination;
 
     /**
      * @return Organization[]
@@ -31,6 +31,16 @@ class OrganizationObjectList
     public function getData(): array
     {
         return $this->data;
+    }
+
+    public function getLinks(): ObjectListLinks
+    {
+        return $this->links;
+    }
+
+    public function getPagination(): ObjectListPagination
+    {
+        return $this->pagination;
     }
 
     /**
@@ -43,26 +53,16 @@ class OrganizationObjectList
         return $this;
     }
 
-    public function getPagination(): ObjectListPagination
+    public function setLinks(ObjectListLinks $links): self
     {
-        return $this->pagination;
+        $this->links = $links;
+
+        return $this;
     }
 
     public function setPagination(ObjectListPagination $pagination): self
     {
         $this->pagination = $pagination;
-
-        return $this;
-    }
-
-    public function getLinks(): ObjectListLinks
-    {
-        return $this->links;
-    }
-
-    public function setLinks(ObjectListLinks $links): self
-    {
-        $this->links = $links;
 
         return $this;
     }

@@ -21,19 +21,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ObjectListLinksNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return $type === 'OParl\\Model\\ObjectListLinks';
-    }
-
-    public function supportsNormalization($data, $format = null)
-    {
-        return $data instanceof \OParl\Model\ObjectListLinks;
-    }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -89,5 +79,15 @@ class ObjectListLinksNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === 'OParl\\Model\\ObjectListLinks';
+    }
+
+    public function supportsNormalization($data, $format = null)
+    {
+        return $data instanceof \OParl\Model\ObjectListLinks;
     }
 }

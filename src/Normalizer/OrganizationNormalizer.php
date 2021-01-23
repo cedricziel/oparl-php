@@ -21,19 +21,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return $type === 'OParl\\Model\\Organization';
-    }
-
-    public function supportsNormalization($data, $format = null)
-    {
-        return $data instanceof \OParl\Model\Organization;
-    }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -102,9 +92,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
             $value_2 = $data['shortName'];
-            if (is_string($data['shortName'])) {
+            if (\is_string($data['shortName'])) {
                 $value_2 = $data['shortName'];
-            } elseif (is_null($data['shortName'])) {
+            } elseif (null === $data['shortName']) {
                 $value_2 = $data['shortName'];
             }
             $object->setShortName($value_2);
@@ -113,9 +103,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $value_3 = $data['license'];
-            if (is_string($data['license'])) {
+            if (\is_string($data['license'])) {
                 $value_3 = $data['license'];
-            } elseif (is_null($data['license'])) {
+            } elseif (null === $data['license']) {
                 $value_3 = $data['license'];
             }
             $object->setLicense($value_3);
@@ -131,9 +121,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
             $value_5 = $data['web'];
-            if (is_string($data['web'])) {
+            if (\is_string($data['web'])) {
                 $value_5 = $data['web'];
-            } elseif (is_null($data['web'])) {
+            } elseif (null === $data['web']) {
                 $value_5 = $data['web'];
             }
             $object->setWeb($value_5);
@@ -213,16 +203,16 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['name'] = $object->getName();
         }
         $value_2 = $object->getShortName();
-        if (is_string($object->getShortName())) {
+        if (\is_string($object->getShortName())) {
             $value_2 = $object->getShortName();
-        } elseif (is_null($object->getShortName())) {
+        } elseif (null === $object->getShortName()) {
             $value_2 = $object->getShortName();
         }
         $data['shortName'] = $value_2;
         $value_3 = $object->getLicense();
-        if (is_string($object->getLicense())) {
+        if (\is_string($object->getLicense())) {
             $value_3 = $object->getLicense();
-        } elseif (is_null($object->getLicense())) {
+        } elseif (null === $object->getLicense()) {
             $value_3 = $object->getLicense();
         }
         $data['license'] = $value_3;
@@ -234,9 +224,9 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['keyword'] = $values_2;
         }
         $value_5 = $object->getWeb();
-        if (is_string($object->getWeb())) {
+        if (\is_string($object->getWeb())) {
             $value_5 = $object->getWeb();
-        } elseif (is_null($object->getWeb())) {
+        } elseif (null === $object->getWeb()) {
             $value_5 = $object->getWeb();
         }
         $data['web'] = $value_5;
@@ -251,5 +241,15 @@ class OrganizationNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
 
         return $data;
+    }
+
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === 'OParl\\Model\\Organization';
+    }
+
+    public function supportsNormalization($data, $format = null)
+    {
+        return $data instanceof \OParl\Model\Organization;
     }
 }

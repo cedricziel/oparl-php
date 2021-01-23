@@ -15,7 +15,7 @@ class ObjectListPagination
     /**
      * @var float
      */
-    protected $totalElements;
+    protected $currentPage;
     /**
      * @var float
      */
@@ -23,22 +23,15 @@ class ObjectListPagination
     /**
      * @var float
      */
-    protected $currentPage;
+    protected $totalElements;
     /**
      * @var float
      */
     protected $totalPages;
 
-    public function getTotalElements(): float
+    public function getCurrentPage(): float
     {
-        return $this->totalElements;
-    }
-
-    public function setTotalElements(float $totalElements): self
-    {
-        $this->totalElements = $totalElements;
-
-        return $this;
+        return $this->currentPage;
     }
 
     public function getElementsPerPage(): float
@@ -46,16 +39,14 @@ class ObjectListPagination
         return $this->elementsPerPage;
     }
 
-    public function setElementsPerPage(float $elementsPerPage): self
+    public function getTotalElements(): float
     {
-        $this->elementsPerPage = $elementsPerPage;
-
-        return $this;
+        return $this->totalElements;
     }
 
-    public function getCurrentPage(): float
+    public function getTotalPages(): float
     {
-        return $this->currentPage;
+        return $this->totalPages;
     }
 
     public function setCurrentPage(float $currentPage): self
@@ -65,9 +56,18 @@ class ObjectListPagination
         return $this;
     }
 
-    public function getTotalPages(): float
+    public function setElementsPerPage(float $elementsPerPage): self
     {
-        return $this->totalPages;
+        $this->elementsPerPage = $elementsPerPage;
+
+        return $this;
+    }
+
+    public function setTotalElements(float $totalElements): self
+    {
+        $this->totalElements = $totalElements;
+
+        return $this;
     }
 
     public function setTotalPages(float $totalPages): self

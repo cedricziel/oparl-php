@@ -21,19 +21,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return $type === 'OParl\\Model\\Body';
-    }
-
-    public function supportsNormalization($data, $format = null)
-    {
-        return $data instanceof \OParl\Model\Body;
-    }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -74,52 +64,52 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('organization', $data)) {
             $value_1 = $data['organization'];
-            if (is_array($data['organization']) && $this->isOnlyNumericKeys($data['organization'])) {
+            if (\is_array($data['organization']) && $this->isOnlyNumericKeys($data['organization'])) {
                 $values_1 = [];
                 foreach ($data['organization'] as $value_2) {
                     $values_1[] = $value_2;
                 }
                 $value_1 = $values_1;
-            } elseif (is_string($data['organization'])) {
+            } elseif (\is_string($data['organization'])) {
                 $value_1 = $data['organization'];
             }
             $object->setOrganization($value_1);
         }
         if (\array_key_exists('person', $data)) {
             $value_3 = $data['person'];
-            if (is_array($data['person']) && $this->isOnlyNumericKeys($data['person'])) {
+            if (\is_array($data['person']) && $this->isOnlyNumericKeys($data['person'])) {
                 $values_2 = [];
                 foreach ($data['person'] as $value_4) {
                     $values_2[] = $value_4;
                 }
                 $value_3 = $values_2;
-            } elseif (is_string($data['person'])) {
+            } elseif (\is_string($data['person'])) {
                 $value_3 = $data['person'];
             }
             $object->setPerson($value_3);
         }
         if (\array_key_exists('meeting', $data)) {
             $value_5 = $data['meeting'];
-            if (is_array($data['meeting']) && $this->isOnlyNumericKeys($data['meeting'])) {
+            if (\is_array($data['meeting']) && $this->isOnlyNumericKeys($data['meeting'])) {
                 $values_3 = [];
                 foreach ($data['meeting'] as $value_6) {
                     $values_3[] = $value_6;
                 }
                 $value_5 = $values_3;
-            } elseif (is_string($data['meeting'])) {
+            } elseif (\is_string($data['meeting'])) {
                 $value_5 = $data['meeting'];
             }
             $object->setMeeting($value_5);
         }
         if (\array_key_exists('paper', $data)) {
             $value_7 = $data['paper'];
-            if (is_array($data['paper']) && $this->isOnlyNumericKeys($data['paper'])) {
+            if (\is_array($data['paper']) && $this->isOnlyNumericKeys($data['paper'])) {
                 $values_4 = [];
                 foreach ($data['paper'] as $value_8) {
                     $values_4[] = $value_8;
                 }
                 $value_7 = $values_4;
-            } elseif (is_string($data['paper'])) {
+            } elseif (\is_string($data['paper'])) {
                 $value_7 = $data['paper'];
             }
             $object->setPaper($value_7);
@@ -133,78 +123,78 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('agendaItem', $data)) {
             $value_10 = $data['agendaItem'];
-            if (is_array($data['agendaItem']) && $this->isOnlyNumericKeys($data['agendaItem'])) {
+            if (\is_array($data['agendaItem']) && $this->isOnlyNumericKeys($data['agendaItem'])) {
                 $values_6 = [];
                 foreach ($data['agendaItem'] as $value_11) {
                     $values_6[] = $value_11;
                 }
                 $value_10 = $values_6;
-            } elseif (is_string($data['agendaItem'])) {
+            } elseif (\is_string($data['agendaItem'])) {
                 $value_10 = $data['agendaItem'];
             }
             $object->setAgendaItem($value_10);
         }
         if (\array_key_exists('consultation', $data)) {
             $value_12 = $data['consultation'];
-            if (is_array($data['consultation']) && $this->isOnlyNumericKeys($data['consultation'])) {
+            if (\is_array($data['consultation']) && $this->isOnlyNumericKeys($data['consultation'])) {
                 $values_7 = [];
                 foreach ($data['consultation'] as $value_13) {
                     $values_7[] = $value_13;
                 }
                 $value_12 = $values_7;
-            } elseif (is_string($data['consultation'])) {
+            } elseif (\is_string($data['consultation'])) {
                 $value_12 = $data['consultation'];
             }
             $object->setConsultation($value_12);
         }
         if (\array_key_exists('file', $data)) {
             $value_14 = $data['file'];
-            if (is_array($data['file']) && $this->isOnlyNumericKeys($data['file'])) {
+            if (\is_array($data['file']) && $this->isOnlyNumericKeys($data['file'])) {
                 $values_8 = [];
                 foreach ($data['file'] as $value_15) {
                     $values_8[] = $value_15;
                 }
                 $value_14 = $values_8;
-            } elseif (is_string($data['file'])) {
+            } elseif (\is_string($data['file'])) {
                 $value_14 = $data['file'];
             }
             $object->setFile($value_14);
         }
         if (\array_key_exists('locationList', $data)) {
             $value_16 = $data['locationList'];
-            if (is_array($data['locationList']) && $this->isOnlyNumericKeys($data['locationList'])) {
+            if (\is_array($data['locationList']) && $this->isOnlyNumericKeys($data['locationList'])) {
                 $values_9 = [];
                 foreach ($data['locationList'] as $value_17) {
                     $values_9[] = $value_17;
                 }
                 $value_16 = $values_9;
-            } elseif (is_string($data['locationList'])) {
+            } elseif (\is_string($data['locationList'])) {
                 $value_16 = $data['locationList'];
             }
             $object->setLocationList($value_16);
         }
         if (\array_key_exists('legislativeTermList', $data)) {
             $value_18 = $data['legislativeTermList'];
-            if (is_array($data['legislativeTermList']) && $this->isOnlyNumericKeys($data['legislativeTermList'])) {
+            if (\is_array($data['legislativeTermList']) && $this->isOnlyNumericKeys($data['legislativeTermList'])) {
                 $values_10 = [];
                 foreach ($data['legislativeTermList'] as $value_19) {
                     $values_10[] = $value_19;
                 }
                 $value_18 = $values_10;
-            } elseif (is_string($data['legislativeTermList'])) {
+            } elseif (\is_string($data['legislativeTermList'])) {
                 $value_18 = $data['legislativeTermList'];
             }
             $object->setLegislativeTermList($value_18);
         }
         if (\array_key_exists('membership', $data)) {
             $value_20 = $data['membership'];
-            if (is_array($data['membership']) && $this->isOnlyNumericKeys($data['membership'])) {
+            if (\is_array($data['membership']) && $this->isOnlyNumericKeys($data['membership'])) {
                 $values_11 = [];
                 foreach ($data['membership'] as $value_21) {
                     $values_11[] = $value_21;
                 }
                 $value_20 = $values_11;
-            } elseif (is_string($data['membership'])) {
+            } elseif (\is_string($data['membership'])) {
                 $value_20 = $data['membership'];
             }
             $object->setMembership($value_20);
@@ -223,9 +213,9 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
             $value_22 = $data['shortName'];
-            if (is_string($data['shortName'])) {
+            if (\is_string($data['shortName'])) {
                 $value_22 = $data['shortName'];
-            } elseif (is_null($data['shortName'])) {
+            } elseif (null === $data['shortName']) {
                 $value_22 = $data['shortName'];
             }
             $object->setShortName($value_22);
@@ -234,9 +224,9 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $value_23 = $data['license'];
-            if (is_string($data['license'])) {
+            if (\is_string($data['license'])) {
                 $value_23 = $data['license'];
-            } elseif (is_null($data['license'])) {
+            } elseif (null === $data['license']) {
                 $value_23 = $data['license'];
             }
             $object->setLicense($value_23);
@@ -252,9 +242,9 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
             $value_25 = $data['web'];
-            if (is_string($data['web'])) {
+            if (\is_string($data['web'])) {
                 $value_25 = $data['web'];
-            } elseif (is_null($data['web'])) {
+            } elseif (null === $data['web']) {
                 $value_25 = $data['web'];
             }
             $object->setWeb($value_25);
@@ -307,52 +297,52 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getOrganization()) {
             $value_1 = $object->getOrganization();
-            if (is_array($object->getOrganization())) {
+            if (\is_array($object->getOrganization())) {
                 $values_1 = [];
                 foreach ($object->getOrganization() as $value_2) {
                     $values_1[] = $value_2;
                 }
                 $value_1 = $values_1;
-            } elseif (is_string($object->getOrganization())) {
+            } elseif (\is_string($object->getOrganization())) {
                 $value_1 = $object->getOrganization();
             }
             $data['organization'] = $value_1;
         }
         if (null !== $object->getPerson()) {
             $value_3 = $object->getPerson();
-            if (is_array($object->getPerson())) {
+            if (\is_array($object->getPerson())) {
                 $values_2 = [];
                 foreach ($object->getPerson() as $value_4) {
                     $values_2[] = $value_4;
                 }
                 $value_3 = $values_2;
-            } elseif (is_string($object->getPerson())) {
+            } elseif (\is_string($object->getPerson())) {
                 $value_3 = $object->getPerson();
             }
             $data['person'] = $value_3;
         }
         if (null !== $object->getMeeting()) {
             $value_5 = $object->getMeeting();
-            if (is_array($object->getMeeting())) {
+            if (\is_array($object->getMeeting())) {
                 $values_3 = [];
                 foreach ($object->getMeeting() as $value_6) {
                     $values_3[] = $value_6;
                 }
                 $value_5 = $values_3;
-            } elseif (is_string($object->getMeeting())) {
+            } elseif (\is_string($object->getMeeting())) {
                 $value_5 = $object->getMeeting();
             }
             $data['meeting'] = $value_5;
         }
         if (null !== $object->getPaper()) {
             $value_7 = $object->getPaper();
-            if (is_array($object->getPaper())) {
+            if (\is_array($object->getPaper())) {
                 $values_4 = [];
                 foreach ($object->getPaper() as $value_8) {
                     $values_4[] = $value_8;
                 }
                 $value_7 = $values_4;
-            } elseif (is_string($object->getPaper())) {
+            } elseif (\is_string($object->getPaper())) {
                 $value_7 = $object->getPaper();
             }
             $data['paper'] = $value_7;
@@ -366,78 +356,78 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getAgendaItem()) {
             $value_10 = $object->getAgendaItem();
-            if (is_array($object->getAgendaItem())) {
+            if (\is_array($object->getAgendaItem())) {
                 $values_6 = [];
                 foreach ($object->getAgendaItem() as $value_11) {
                     $values_6[] = $value_11;
                 }
                 $value_10 = $values_6;
-            } elseif (is_string($object->getAgendaItem())) {
+            } elseif (\is_string($object->getAgendaItem())) {
                 $value_10 = $object->getAgendaItem();
             }
             $data['agendaItem'] = $value_10;
         }
         if (null !== $object->getConsultation()) {
             $value_12 = $object->getConsultation();
-            if (is_array($object->getConsultation())) {
+            if (\is_array($object->getConsultation())) {
                 $values_7 = [];
                 foreach ($object->getConsultation() as $value_13) {
                     $values_7[] = $value_13;
                 }
                 $value_12 = $values_7;
-            } elseif (is_string($object->getConsultation())) {
+            } elseif (\is_string($object->getConsultation())) {
                 $value_12 = $object->getConsultation();
             }
             $data['consultation'] = $value_12;
         }
         if (null !== $object->getFile()) {
             $value_14 = $object->getFile();
-            if (is_array($object->getFile())) {
+            if (\is_array($object->getFile())) {
                 $values_8 = [];
                 foreach ($object->getFile() as $value_15) {
                     $values_8[] = $value_15;
                 }
                 $value_14 = $values_8;
-            } elseif (is_string($object->getFile())) {
+            } elseif (\is_string($object->getFile())) {
                 $value_14 = $object->getFile();
             }
             $data['file'] = $value_14;
         }
         if (null !== $object->getLocationList()) {
             $value_16 = $object->getLocationList();
-            if (is_array($object->getLocationList())) {
+            if (\is_array($object->getLocationList())) {
                 $values_9 = [];
                 foreach ($object->getLocationList() as $value_17) {
                     $values_9[] = $value_17;
                 }
                 $value_16 = $values_9;
-            } elseif (is_string($object->getLocationList())) {
+            } elseif (\is_string($object->getLocationList())) {
                 $value_16 = $object->getLocationList();
             }
             $data['locationList'] = $value_16;
         }
         if (null !== $object->getLegislativeTermList()) {
             $value_18 = $object->getLegislativeTermList();
-            if (is_array($object->getLegislativeTermList())) {
+            if (\is_array($object->getLegislativeTermList())) {
                 $values_10 = [];
                 foreach ($object->getLegislativeTermList() as $value_19) {
                     $values_10[] = $value_19;
                 }
                 $value_18 = $values_10;
-            } elseif (is_string($object->getLegislativeTermList())) {
+            } elseif (\is_string($object->getLegislativeTermList())) {
                 $value_18 = $object->getLegislativeTermList();
             }
             $data['legislativeTermList'] = $value_18;
         }
         if (null !== $object->getMembership()) {
             $value_20 = $object->getMembership();
-            if (is_array($object->getMembership())) {
+            if (\is_array($object->getMembership())) {
                 $values_11 = [];
                 foreach ($object->getMembership() as $value_21) {
                     $values_11[] = $value_21;
                 }
                 $value_20 = $values_11;
-            } elseif (is_string($object->getMembership())) {
+            } elseif (\is_string($object->getMembership())) {
                 $value_20 = $object->getMembership();
             }
             $data['membership'] = $value_20;
@@ -455,16 +445,16 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['name'] = $object->getName();
         }
         $value_22 = $object->getShortName();
-        if (is_string($object->getShortName())) {
+        if (\is_string($object->getShortName())) {
             $value_22 = $object->getShortName();
-        } elseif (is_null($object->getShortName())) {
+        } elseif (null === $object->getShortName()) {
             $value_22 = $object->getShortName();
         }
         $data['shortName'] = $value_22;
         $value_23 = $object->getLicense();
-        if (is_string($object->getLicense())) {
+        if (\is_string($object->getLicense())) {
             $value_23 = $object->getLicense();
-        } elseif (is_null($object->getLicense())) {
+        } elseif (null === $object->getLicense()) {
             $value_23 = $object->getLicense();
         }
         $data['license'] = $value_23;
@@ -476,9 +466,9 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['keyword'] = $values_12;
         }
         $value_25 = $object->getWeb();
-        if (is_string($object->getWeb())) {
+        if (\is_string($object->getWeb())) {
             $value_25 = $object->getWeb();
-        } elseif (is_null($object->getWeb())) {
+        } elseif (null === $object->getWeb()) {
             $value_25 = $object->getWeb();
         }
         $data['web'] = $value_25;
@@ -493,5 +483,15 @@ class BodyNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
 
         return $data;
+    }
+
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === 'OParl\\Model\\Body';
+    }
+
+    public function supportsNormalization($data, $format = null)
+    {
+        return $data instanceof \OParl\Model\Body;
     }
 }

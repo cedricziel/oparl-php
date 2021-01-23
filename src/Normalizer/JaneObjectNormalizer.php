@@ -20,29 +20,11 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     protected $normalizers = ['OParl\\Model\\OParlObject' => 'OParl\\Normalizer\\OParlObjectNormalizer', 'OParl\\Model\\ObjectList' => 'OParl\\Normalizer\\ObjectListNormalizer', 'OParl\\Model\\ObjectListPagination' => 'OParl\\Normalizer\\ObjectListPaginationNormalizer', 'OParl\\Model\\ObjectListLinks' => 'OParl\\Normalizer\\ObjectListLinksNormalizer', 'OParl\\Model\\OrganizationObjectList' => 'OParl\\Normalizer\\OrganizationObjectListNormalizer', 'OParl\\Model\\System' => 'OParl\\Normalizer\\SystemNormalizer', 'OParl\\Model\\Body' => 'OParl\\Normalizer\\BodyNormalizer', 'OParl\\Model\\LegislativeTerm' => 'OParl\\Normalizer\\LegislativeTermNormalizer', 'OParl\\Model\\Organization' => 'OParl\\Normalizer\\OrganizationNormalizer', 'OParl\\Model\\Person' => 'OParl\\Normalizer\\PersonNormalizer', 'OParl\\Model\\Membership' => 'OParl\\Normalizer\\MembershipNormalizer', 'OParl\\Model\\Meeting' => 'OParl\\Normalizer\\MeetingNormalizer', 'OParl\\Model\\AgendaItem' => 'OParl\\Normalizer\\AgendaItemNormalizer', 'OParl\\Model\\Paper' => 'OParl\\Normalizer\\PaperNormalizer', 'OParl\\Model\\Consultation' => 'OParl\\Normalizer\\ConsultationNormalizer', 'OParl\\Model\\File' => 'OParl\\Normalizer\\FileNormalizer', 'OParl\\Model\\Location' => 'OParl\\Normalizer\\LocationNormalizer', '\\Jane\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchemaRuntime\\Normalizer\\ReferenceNormalizer'];
     protected $normalizersCache = [];
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return array_key_exists($type, $this->normalizers);
-    }
-
-    public function supportsNormalization($data, $format = null)
-    {
-        return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
-    }
-
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $normalizerClass = $this->normalizers[get_class($object)];
-        $normalizer = $this->getNormalizer($normalizerClass);
-
-        return $normalizer->normalize($object, $format, $context);
-    }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -50,6 +32,24 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $denormalizer = $this->getNormalizer($denormalizerClass);
 
         return $denormalizer->denormalize($data, $class, $format, $context);
+    }
+
+    public function normalize($object, $format = null, array $context = [])
+    {
+        $normalizerClass = $this->normalizers[\get_class($object)];
+        $normalizer = $this->getNormalizer($normalizerClass);
+
+        return $normalizer->normalize($object, $format, $context);
+    }
+
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return \array_key_exists($type, $this->normalizers);
+    }
+
+    public function supportsNormalization($data, $format = null)
+    {
+        return \is_object($data) && \array_key_exists(\get_class($data), $this->normalizers);
     }
 
     private function getNormalizer(string $normalizerClass)

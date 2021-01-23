@@ -13,34 +13,34 @@ namespace OParl\Model;
 class ObjectList
 {
     /**
-     * @var ObjectListPagination
-     */
-    protected $pagination;
-    /**
      * @var ObjectListLinks
      */
     protected $links;
-
-    public function getPagination(): ObjectListPagination
-    {
-        return $this->pagination;
-    }
-
-    public function setPagination(ObjectListPagination $pagination): self
-    {
-        $this->pagination = $pagination;
-
-        return $this;
-    }
+    /**
+     * @var ObjectListPagination
+     */
+    protected $pagination;
 
     public function getLinks(): ObjectListLinks
     {
         return $this->links;
     }
 
+    public function getPagination(): ObjectListPagination
+    {
+        return $this->pagination;
+    }
+
     public function setLinks(ObjectListLinks $links): self
     {
         $this->links = $links;
+
+        return $this;
+    }
+
+    public function setPagination(ObjectListPagination $pagination): self
+    {
+        $this->pagination = $pagination;
 
         return $this;
     }

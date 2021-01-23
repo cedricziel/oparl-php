@@ -15,18 +15,6 @@ class System
     /**
      * @var string
      */
-    protected $type = 'https://schema.oparl.org/1.1/System';
-    /**
-     * @var string
-     */
-    protected $oparlVersion = 'https://schema.oparl.org/1.1/';
-    /**
-     * @var string[]
-     */
-    protected $otherOparlVersions;
-    /**
-     * @var string
-     */
     protected $body;
     /**
      * @var string
@@ -39,7 +27,19 @@ class System
     /**
      * @var string
      */
-    protected $website;
+    protected $oparlVersion = 'https://schema.oparl.org/1.1/';
+    /**
+     * @var string[]
+     */
+    protected $otherOparlVersions;
+    /**
+     * @var string
+     */
+    protected $product;
+    /**
+     * @var string
+     */
+    protected $type = 'https://schema.oparl.org/1.1/System';
     /**
      * @var string
      */
@@ -47,30 +47,26 @@ class System
     /**
      * @var string
      */
-    protected $product;
+    protected $website;
 
-    public function getType(): string
+    public function getBody(): string
     {
-        return $this->type;
+        return $this->body;
     }
 
-    public function setType(string $type): self
+    public function getContactEmail(): string
     {
-        $this->type = $type;
+        return $this->contactEmail;
+    }
 
-        return $this;
+    public function getContactName(): string
+    {
+        return $this->contactName;
     }
 
     public function getOparlVersion(): string
     {
         return $this->oparlVersion;
-    }
-
-    public function setOparlVersion(string $oparlVersion): self
-    {
-        $this->oparlVersion = $oparlVersion;
-
-        return $this;
     }
 
     /**
@@ -79,6 +75,54 @@ class System
     public function getOtherOparlVersions(): array
     {
         return $this->otherOparlVersions;
+    }
+
+    public function getProduct(): string
+    {
+        return $this->product;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getVendor(): string
+    {
+        return $this->vendor;
+    }
+
+    public function getWebsite(): string
+    {
+        return $this->website;
+    }
+
+    public function setBody(string $body): self
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    public function setContactEmail(string $contactEmail): self
+    {
+        $this->contactEmail = $contactEmail;
+
+        return $this;
+    }
+
+    public function setContactName(string $contactName): self
+    {
+        $this->contactName = $contactName;
+
+        return $this;
+    }
+
+    public function setOparlVersion(string $oparlVersion): self
+    {
+        $this->oparlVersion = $oparlVersion;
+
+        return $this;
     }
 
     /**
@@ -91,57 +135,18 @@ class System
         return $this;
     }
 
-    public function getBody(): string
+    public function setProduct(string $product): self
     {
-        return $this->body;
-    }
-
-    public function setBody(string $body): self
-    {
-        $this->body = $body;
+        $this->product = $product;
 
         return $this;
     }
 
-    public function getContactEmail(): string
+    public function setType(string $type): self
     {
-        return $this->contactEmail;
-    }
-
-    public function setContactEmail(string $contactEmail): self
-    {
-        $this->contactEmail = $contactEmail;
+        $this->type = $type;
 
         return $this;
-    }
-
-    public function getContactName(): string
-    {
-        return $this->contactName;
-    }
-
-    public function setContactName(string $contactName): self
-    {
-        $this->contactName = $contactName;
-
-        return $this;
-    }
-
-    public function getWebsite(): string
-    {
-        return $this->website;
-    }
-
-    public function setWebsite(string $website): self
-    {
-        $this->website = $website;
-
-        return $this;
-    }
-
-    public function getVendor(): string
-    {
-        return $this->vendor;
     }
 
     public function setVendor(string $vendor): self
@@ -151,14 +156,9 @@ class System
         return $this;
     }
 
-    public function getProduct(): string
+    public function setWebsite(string $website): self
     {
-        return $this->product;
-    }
-
-    public function setProduct(string $product): self
-    {
-        $this->product = $product;
+        $this->website = $website;
 
         return $this;
     }

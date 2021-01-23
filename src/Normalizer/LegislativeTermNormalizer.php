@@ -21,19 +21,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
-
-    public function supportsDenormalization($data, $type, $format = null)
-    {
-        return $type === 'OParl\\Model\\LegislativeTerm';
-    }
-
-    public function supportsNormalization($data, $format = null)
-    {
-        return $data instanceof \OParl\Model\LegislativeTerm;
-    }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
@@ -49,9 +39,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $value = $data['body'];
-            if (is_string($data['body'])) {
+            if (\is_string($data['body'])) {
                 $value = $data['body'];
-            } elseif (is_null($data['body'])) {
+            } elseif (null === $data['body']) {
                 $value = $data['body'];
             }
             $object->setBody($value);
@@ -72,9 +62,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
             $value_1 = $data['shortName'];
-            if (is_string($data['shortName'])) {
+            if (\is_string($data['shortName'])) {
                 $value_1 = $data['shortName'];
-            } elseif (is_null($data['shortName'])) {
+            } elseif (null === $data['shortName']) {
                 $value_1 = $data['shortName'];
             }
             $object->setShortName($value_1);
@@ -83,9 +73,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
             $value_2 = $data['license'];
-            if (is_string($data['license'])) {
+            if (\is_string($data['license'])) {
                 $value_2 = $data['license'];
-            } elseif (is_null($data['license'])) {
+            } elseif (null === $data['license']) {
                 $value_2 = $data['license'];
             }
             $object->setLicense($value_2);
@@ -101,9 +91,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
             $value_4 = $data['web'];
-            if (is_string($data['web'])) {
+            if (\is_string($data['web'])) {
                 $value_4 = $data['web'];
-            } elseif (is_null($data['web'])) {
+            } elseif (null === $data['web']) {
                 $value_4 = $data['web'];
             }
             $object->setWeb($value_4);
@@ -130,9 +120,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
             $data['type'] = $object->getType();
         }
         $value = $object->getBody();
-        if (is_string($object->getBody())) {
+        if (\is_string($object->getBody())) {
             $value = $object->getBody();
-        } elseif (is_null($object->getBody())) {
+        } elseif (null === $object->getBody()) {
             $value = $object->getBody();
         }
         $data['body'] = $value;
@@ -149,16 +139,16 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
             $data['name'] = $object->getName();
         }
         $value_1 = $object->getShortName();
-        if (is_string($object->getShortName())) {
+        if (\is_string($object->getShortName())) {
             $value_1 = $object->getShortName();
-        } elseif (is_null($object->getShortName())) {
+        } elseif (null === $object->getShortName()) {
             $value_1 = $object->getShortName();
         }
         $data['shortName'] = $value_1;
         $value_2 = $object->getLicense();
-        if (is_string($object->getLicense())) {
+        if (\is_string($object->getLicense())) {
             $value_2 = $object->getLicense();
-        } elseif (is_null($object->getLicense())) {
+        } elseif (null === $object->getLicense()) {
             $value_2 = $object->getLicense();
         }
         $data['license'] = $value_2;
@@ -170,9 +160,9 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
             $data['keyword'] = $values;
         }
         $value_4 = $object->getWeb();
-        if (is_string($object->getWeb())) {
+        if (\is_string($object->getWeb())) {
             $value_4 = $object->getWeb();
-        } elseif (is_null($object->getWeb())) {
+        } elseif (null === $object->getWeb()) {
             $value_4 = $object->getWeb();
         }
         $data['web'] = $value_4;
@@ -187,5 +177,15 @@ class LegislativeTermNormalizer implements DenormalizerInterface, NormalizerInte
         }
 
         return $data;
+    }
+
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === 'OParl\\Model\\LegislativeTerm';
+    }
+
+    public function supportsNormalization($data, $format = null)
+    {
+        return $data instanceof \OParl\Model\LegislativeTerm;
     }
 }

@@ -13,15 +13,31 @@ namespace OParl\Model;
 class Person
 {
     /**
-     * @var string
+     * @var \DateTime
      */
-    protected $type = 'https://schema.oparl.org/1.1/Person';
+    protected $created;
+    /**
+     * @var bool
+     */
+    protected $deleted = false;
     /**
      * Every object *must* carry a URL as ID.
      *
      * @var string
      */
     protected $id;
+    /**
+     * @var string[]
+     */
+    protected $keyword;
+    /**
+     * @var string|null
+     */
+    protected $license;
+    /**
+     * @var \DateTime
+     */
+    protected $modified;
     /**
      * Every object *must* carry a name.
      *
@@ -33,40 +49,22 @@ class Person
      */
     protected $shortName;
     /**
-     * @var string|null
+     * @var string
      */
-    protected $license;
-    /**
-     * @var string[]
-     */
-    protected $keyword;
+    protected $type = 'https://schema.oparl.org/1.1/Person';
     /**
      * @var string|null
      */
     protected $web;
-    /**
-     * @var bool
-     */
-    protected $deleted = false;
-    /**
-     * @var \DateTime
-     */
-    protected $created;
-    /**
-     * @var \DateTime
-     */
-    protected $modified;
 
-    public function getType(): string
+    public function getCreated(): \DateTime
     {
-        return $this->type;
+        return $this->created;
     }
 
-    public function setType(string $type): self
+    public function getDeleted(): bool
     {
-        $this->type = $type;
-
-        return $this;
+        return $this->deleted;
     }
 
     /**
@@ -75,6 +73,61 @@ class Person
     public function getId(): string
     {
         return $this->id;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getKeyword(): array
+    {
+        return $this->keyword;
+    }
+
+    public function getLicense(): ?string
+    {
+        return $this->license;
+    }
+
+    public function getModified(): \DateTime
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Every object *must* carry a name.
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getShortName(): ?string
+    {
+        return $this->shortName;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getWeb(): ?string
+    {
+        return $this->web;
+    }
+
+    public function setCreated(\DateTime $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function setDeleted(bool $deleted): self
+    {
+        $this->deleted = $deleted;
+
+        return $this;
     }
 
     /**
@@ -88,11 +141,27 @@ class Person
     }
 
     /**
-     * Every object *must* carry a name.
+     * @param string[] $keyword
      */
-    public function getName(): string
+    public function setKeyword(array $keyword): self
     {
-        return $this->name;
+        $this->keyword = $keyword;
+
+        return $this;
+    }
+
+    public function setLicense(?string $license): self
+    {
+        $this->license = $license;
+
+        return $this;
+    }
+
+    public function setModified(\DateTime $modified): self
+    {
+        $this->modified = $modified;
+
+        return $this;
     }
 
     /**
@@ -105,11 +174,6 @@ class Person
         return $this;
     }
 
-    public function getShortName(): ?string
-    {
-        return $this->shortName;
-    }
-
     public function setShortName(?string $shortName): self
     {
         $this->shortName = $shortName;
@@ -117,80 +181,16 @@ class Person
         return $this;
     }
 
-    public function getLicense(): ?string
+    public function setType(string $type): self
     {
-        return $this->license;
-    }
-
-    public function setLicense(?string $license): self
-    {
-        $this->license = $license;
+        $this->type = $type;
 
         return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getKeyword(): array
-    {
-        return $this->keyword;
-    }
-
-    /**
-     * @param string[] $keyword
-     */
-    public function setKeyword(array $keyword): self
-    {
-        $this->keyword = $keyword;
-
-        return $this;
-    }
-
-    public function getWeb(): ?string
-    {
-        return $this->web;
     }
 
     public function setWeb(?string $web): self
     {
         $this->web = $web;
-
-        return $this;
-    }
-
-    public function getDeleted(): bool
-    {
-        return $this->deleted;
-    }
-
-    public function setDeleted(bool $deleted): self
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    public function getCreated(): \DateTime
-    {
-        return $this->created;
-    }
-
-    public function setCreated(\DateTime $created): self
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    public function getModified(): \DateTime
-    {
-        return $this->modified;
-    }
-
-    public function setModified(\DateTime $modified): self
-    {
-        $this->modified = $modified;
 
         return $this;
     }

@@ -19,11 +19,7 @@ class ObjectListLinks
     /**
      * @var string
      */
-    protected $prev;
-    /**
-     * @var string
-     */
-    protected $self;
+    protected $last;
     /**
      * @var string
      */
@@ -31,7 +27,11 @@ class ObjectListLinks
     /**
      * @var string
      */
-    protected $last;
+    protected $prev;
+    /**
+     * @var string
+     */
+    protected $self;
     /**
      * @var string
      */
@@ -42,35 +42,9 @@ class ObjectListLinks
         return $this->first;
     }
 
-    public function setFirst(string $first): self
+    public function getLast(): string
     {
-        $this->first = $first;
-
-        return $this;
-    }
-
-    public function getPrev(): string
-    {
-        return $this->prev;
-    }
-
-    public function setPrev(string $prev): self
-    {
-        $this->prev = $prev;
-
-        return $this;
-    }
-
-    public function getSelf(): string
-    {
-        return $this->self;
-    }
-
-    public function setSelf(string $self): self
-    {
-        $this->self = $self;
-
-        return $this;
+        return $this->last;
     }
 
     public function getNext(): string
@@ -78,16 +52,26 @@ class ObjectListLinks
         return $this->next;
     }
 
-    public function setNext(string $next): self
+    public function getPrev(): string
     {
-        $this->next = $next;
-
-        return $this;
+        return $this->prev;
     }
 
-    public function getLast(): string
+    public function getSelf(): string
     {
-        return $this->last;
+        return $this->self;
+    }
+
+    public function getWeb(): string
+    {
+        return $this->web;
+    }
+
+    public function setFirst(string $first): self
+    {
+        $this->first = $first;
+
+        return $this;
     }
 
     public function setLast(string $last): self
@@ -97,9 +81,25 @@ class ObjectListLinks
         return $this;
     }
 
-    public function getWeb(): string
+    public function setNext(string $next): self
     {
-        return $this->web;
+        $this->next = $next;
+
+        return $this;
+    }
+
+    public function setPrev(string $prev): self
+    {
+        $this->prev = $prev;
+
+        return $this;
+    }
+
+    public function setSelf(string $self): self
+    {
+        $this->self = $self;
+
+        return $this;
     }
 
     public function setWeb(string $web): self
