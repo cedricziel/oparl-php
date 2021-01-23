@@ -11,7 +11,7 @@ class BodyNormalizerTest extends TestCase
 {
     use NormalizerProvider;
 
-    public function testCanNormalizeMeeting()
+    public function testCanNormalize()
     {
         $content = <<<EOF
 {
