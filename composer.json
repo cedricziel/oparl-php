@@ -1,0 +1,30 @@
+{
+    "name": "cedricziel/php-oparl",
+    "description": "OParl model library",
+    "type": "library",
+    "homepage": "https://github.com/cedricziel/oparl-php",
+    "require": {
+        "php": "^8.0",
+        "jane-php/json-schema-runtime": "~6.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "jane-php/json-schema": "~6.1.0",
+        "friendsofphp/php-cs-fixer": "^2.18"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cedric Ziel",
+            "email": "cedric@cedric-ziel.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OParl\\": "src/"
+        }
+    },
+    "scripts": {
+        "generate": "@php vendor/bin/jane generate -c jane-configuration.php"
+    }
+}

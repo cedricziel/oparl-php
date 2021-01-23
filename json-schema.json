@@ -1,0 +1,603 @@
+{
+  "$id": "https://example.com/oparl.schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "title": "The object URL",
+      "description": "Every object *must* carry a URL as ID"
+    },
+    "name": {
+      "type": "string",
+      "title": "The objects name",
+      "description": "Every object *must* carry a name"
+    },
+    "shortName": {
+      "type": ["string", "null"],
+      "title": "The objects abbreviated Name."
+    },
+    "license": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "keyword": {
+      "type": ["string", "null"]
+    },
+    "web": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "System": {
+      "title": "System",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/System"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        },
+        "oparlVersion": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/"
+        },
+        "otherOparlVersions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "body": {
+          "type": "string",
+          "format": "uri"
+        },
+        "contactEmail": {
+          "type": "string",
+          "format": "email"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "vendor": {
+          "type": "string",
+          "format": "uri"
+        },
+        "product": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Body": {
+      "title": "Body",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Body"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "LegislativeTerm": {
+      "title": "LegislativeTerm",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/LegislativeTerm"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Organization": {
+      "title": "Organization",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Organization"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Person": {
+      "title": "Person",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Person"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Membership": {
+      "title": "Membership",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Membership"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Meeting": {
+      "title": "Meeting",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Meeting"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "AgendaItem": {
+      "title": "AgendaItem",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/AgendaItem"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Paper": {
+      "title": "Paper",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Paper"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Consultation": {
+      "title": "Consultation",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Consultation"
+        },
+
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "File": {
+      "title": "File",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/File"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    },
+    "Location": {
+      "title": "Location",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "https://schema.oparl.org/1.1/Location"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "name": {
+          "$ref": "#/definitions/name"
+        },
+        "shortName": {
+          "$ref": "#/definitions/shortName"
+        },
+        "license": {
+          "$ref": "#/definitions/license"
+        },
+        "keyword": {
+          "$ref": "#/definitions/keyword"
+        },
+        "web": {
+          "$ref": "#/definitions/web"
+        },
+        "deleted": {
+          "$ref": "#/definitions/deleted"
+        },
+        "created": {
+          "$ref": "#/definitions/created"
+        },
+        "modified": {
+          "$ref": "#/definitions/modified"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "created",
+        "modified"
+      ]
+    }
+  }
+}
