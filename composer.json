@@ -24,7 +24,13 @@
             "OParl\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "OParl\\Test\\": "test/"
+        }
+    },
     "scripts": {
+        "test": "@php vendor/bin/phpunit",
         "generate": "@php vendor/bin/jane generate -c jane-configuration.php"
     }
 }

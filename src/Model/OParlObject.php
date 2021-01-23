@@ -10,12 +10,8 @@ declare(strict_types=1);
 
 namespace OParl\Model;
 
-class Location
+class OParlObject
 {
-    /**
-     * @var string
-     */
-    protected $type = 'https://schema.oparl.org/1.1/Location';
     /**
      * Every object *must* carry a URL as ID.
      *
@@ -56,18 +52,6 @@ class Location
      * @var \DateTime
      */
     protected $modified;
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 
     /**
      * Every object *must* carry a URL as ID.

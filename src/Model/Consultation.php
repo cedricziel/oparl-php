@@ -37,7 +37,7 @@ class Consultation
      */
     protected $license;
     /**
-     * @var string|null
+     * @var string[]
      */
     protected $keyword;
     /**
@@ -129,12 +129,18 @@ class Consultation
         return $this;
     }
 
-    public function getKeyword(): ?string
+    /**
+     * @return string[]
+     */
+    public function getKeyword(): array
     {
         return $this->keyword;
     }
 
-    public function setKeyword(?string $keyword): self
+    /**
+     * @param string[] $keyword
+     */
+    public function setKeyword(array $keyword): self
     {
         $this->keyword = $keyword;
 

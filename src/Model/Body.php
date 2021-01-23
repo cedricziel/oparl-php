@@ -17,6 +17,86 @@ class Body
      */
     protected $type = 'https://schema.oparl.org/1.1/Body';
     /**
+     * @var \DateTime
+     */
+    protected $licenseValidSince;
+    /**
+     * @var \DateTime
+     */
+    protected $oparlSince;
+    /**
+     * @var string
+     */
+    protected $ags;
+    /**
+     * @var string
+     */
+    protected $rgs;
+    /**
+     * @var string[]
+     */
+    protected $equivalent;
+    /**
+     * @var string
+     */
+    protected $contactEmail;
+    /**
+     * @var string
+     */
+    protected $contactName;
+    /**
+     * @var string[]|string
+     */
+    protected $organization;
+    /**
+     * @var string[]|string
+     */
+    protected $person;
+    /**
+     * @var string[]|string
+     */
+    protected $meeting;
+    /**
+     * @var string[]|string
+     */
+    protected $paper;
+    /**
+     * @var LegislativeTerm[]
+     */
+    protected $legislativeTerm;
+    /**
+     * @var string[]|string
+     */
+    protected $agendaItem;
+    /**
+     * @var string[]|string
+     */
+    protected $consultation;
+    /**
+     * @var string[]|string
+     */
+    protected $file;
+    /**
+     * @var string[]|string
+     */
+    protected $locationList;
+    /**
+     * @var string[]|string
+     */
+    protected $legislativeTermList;
+    /**
+     * @var string[]|string
+     */
+    protected $membership;
+    /**
+     * @var string
+     */
+    protected $classification;
+    /**
+     * @var Location
+     */
+    protected $location;
+    /**
      * Every object *must* carry a URL as ID.
      *
      * @var string
@@ -37,7 +117,7 @@ class Body
      */
     protected $license;
     /**
-     * @var string|null
+     * @var string[]
      */
     protected $keyword;
     /**
@@ -65,6 +145,318 @@ class Body
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLicenseValidSince(): \DateTime
+    {
+        return $this->licenseValidSince;
+    }
+
+    public function setLicenseValidSince(\DateTime $licenseValidSince): self
+    {
+        $this->licenseValidSince = $licenseValidSince;
+
+        return $this;
+    }
+
+    public function getOparlSince(): \DateTime
+    {
+        return $this->oparlSince;
+    }
+
+    public function setOparlSince(\DateTime $oparlSince): self
+    {
+        $this->oparlSince = $oparlSince;
+
+        return $this;
+    }
+
+    public function getAgs(): string
+    {
+        return $this->ags;
+    }
+
+    public function setAgs(string $ags): self
+    {
+        $this->ags = $ags;
+
+        return $this;
+    }
+
+    public function getRgs(): string
+    {
+        return $this->rgs;
+    }
+
+    public function setRgs(string $rgs): self
+    {
+        $this->rgs = $rgs;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getEquivalent(): array
+    {
+        return $this->equivalent;
+    }
+
+    /**
+     * @param string[] $equivalent
+     */
+    public function setEquivalent(array $equivalent): self
+    {
+        $this->equivalent = $equivalent;
+
+        return $this;
+    }
+
+    public function getContactEmail(): string
+    {
+        return $this->contactEmail;
+    }
+
+    public function setContactEmail(string $contactEmail): self
+    {
+        $this->contactEmail = $contactEmail;
+
+        return $this;
+    }
+
+    public function getContactName(): string
+    {
+        return $this->contactName;
+    }
+
+    public function setContactName(string $contactName): self
+    {
+        $this->contactName = $contactName;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    /**
+     * @param string[]|string $organization
+     */
+    public function setOrganization($organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * @param string[]|string $person
+     */
+    public function setPerson($person): self
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+
+    /**
+     * @param string[]|string $meeting
+     */
+    public function setMeeting($meeting): self
+    {
+        $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getPaper()
+    {
+        return $this->paper;
+    }
+
+    /**
+     * @param string[]|string $paper
+     */
+    public function setPaper($paper): self
+    {
+        $this->paper = $paper;
+
+        return $this;
+    }
+
+    /**
+     * @return LegislativeTerm[]
+     */
+    public function getLegislativeTerm(): array
+    {
+        return $this->legislativeTerm;
+    }
+
+    /**
+     * @param LegislativeTerm[] $legislativeTerm
+     */
+    public function setLegislativeTerm(array $legislativeTerm): self
+    {
+        $this->legislativeTerm = $legislativeTerm;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getAgendaItem()
+    {
+        return $this->agendaItem;
+    }
+
+    /**
+     * @param string[]|string $agendaItem
+     */
+    public function setAgendaItem($agendaItem): self
+    {
+        $this->agendaItem = $agendaItem;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getConsultation()
+    {
+        return $this->consultation;
+    }
+
+    /**
+     * @param string[]|string $consultation
+     */
+    public function setConsultation($consultation): self
+    {
+        $this->consultation = $consultation;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string[]|string $file
+     */
+    public function setFile($file): self
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getLocationList()
+    {
+        return $this->locationList;
+    }
+
+    /**
+     * @param string[]|string $locationList
+     */
+    public function setLocationList($locationList): self
+    {
+        $this->locationList = $locationList;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getLegislativeTermList()
+    {
+        return $this->legislativeTermList;
+    }
+
+    /**
+     * @param string[]|string $legislativeTermList
+     */
+    public function setLegislativeTermList($legislativeTermList): self
+    {
+        $this->legislativeTermList = $legislativeTermList;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|string
+     */
+    public function getMembership()
+    {
+        return $this->membership;
+    }
+
+    /**
+     * @param string[]|string $membership
+     */
+    public function setMembership($membership): self
+    {
+        $this->membership = $membership;
+
+        return $this;
+    }
+
+    public function getClassification(): string
+    {
+        return $this->classification;
+    }
+
+    public function setClassification(string $classification): self
+    {
+        $this->classification = $classification;
+
+        return $this;
+    }
+
+    public function getLocation(): Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(Location $location): self
+    {
+        $this->location = $location;
 
         return $this;
     }
@@ -129,12 +521,18 @@ class Body
         return $this;
     }
 
-    public function getKeyword(): ?string
+    /**
+     * @return string[]
+     */
+    public function getKeyword(): array
     {
         return $this->keyword;
     }
 
-    public function setKeyword(?string $keyword): self
+    /**
+     * @param string[] $keyword
+     */
+    public function setKeyword(array $keyword): self
     {
         $this->keyword = $keyword;
 

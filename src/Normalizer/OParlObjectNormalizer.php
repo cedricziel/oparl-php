@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class AgendaItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class OParlObjectNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -27,12 +27,12 @@ class AgendaItemNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'OParl\\Model\\AgendaItem';
+        return $type === 'OParl\\Model\\OParlObject';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \OParl\Model\AgendaItem;
+        return $data instanceof \OParl\Model\OParlObject;
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -43,10 +43,7 @@ class AgendaItemNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \OParl\Model\AgendaItem();
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
-        }
+        $object = new \OParl\Model\OParlObject();
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }
@@ -109,9 +106,6 @@ class AgendaItemNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }

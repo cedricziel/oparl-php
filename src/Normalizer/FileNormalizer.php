@@ -75,16 +75,12 @@ class FileNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         } elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
         }
-        if (\array_key_exists('keyword', $data) && $data['keyword'] !== null) {
-            $value_2 = $data['keyword'];
-            if (is_string($data['keyword'])) {
-                $value_2 = $data['keyword'];
-            } elseif (is_null($data['keyword'])) {
-                $value_2 = $data['keyword'];
+        if (\array_key_exists('keyword', $data)) {
+            $values = [];
+            foreach ($data['keyword'] as $value_2) {
+                $values[] = $value_2;
             }
-            $object->setKeyword($value_2);
-        } elseif (\array_key_exists('keyword', $data) && $data['keyword'] === null) {
-            $object->setKeyword(null);
+            $object->setKeyword($values);
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
             $value_3 = $data['web'];
@@ -136,13 +132,13 @@ class FileNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $value_1 = $object->getLicense();
         }
         $data['license'] = $value_1;
-        $value_2 = $object->getKeyword();
-        if (is_string($object->getKeyword())) {
-            $value_2 = $object->getKeyword();
-        } elseif (is_null($object->getKeyword())) {
-            $value_2 = $object->getKeyword();
+        if (null !== $object->getKeyword()) {
+            $values = [];
+            foreach ($object->getKeyword() as $value_2) {
+                $values[] = $value_2;
+            }
+            $data['keyword'] = $values;
         }
-        $data['keyword'] = $value_2;
         $value_3 = $object->getWeb();
         if (is_string($object->getWeb())) {
             $value_3 = $object->getWeb();

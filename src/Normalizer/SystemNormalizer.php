@@ -47,74 +47,33 @@ class SystemNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-        }
-        if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
-        }
-        if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
-            $value = $data['shortName'];
-            if (is_string($data['shortName'])) {
-                $value = $data['shortName'];
-            } elseif (is_null($data['shortName'])) {
-                $value = $data['shortName'];
-            }
-            $object->setShortName($value);
-        } elseif (\array_key_exists('shortName', $data) && $data['shortName'] === null) {
-            $object->setShortName(null);
-        }
-        if (\array_key_exists('license', $data) && $data['license'] !== null) {
-            $value_1 = $data['license'];
-            if (is_string($data['license'])) {
-                $value_1 = $data['license'];
-            } elseif (is_null($data['license'])) {
-                $value_1 = $data['license'];
-            }
-            $object->setLicense($value_1);
-        } elseif (\array_key_exists('license', $data) && $data['license'] === null) {
-            $object->setLicense(null);
-        }
-        if (\array_key_exists('keyword', $data) && $data['keyword'] !== null) {
-            $value_2 = $data['keyword'];
-            if (is_string($data['keyword'])) {
-                $value_2 = $data['keyword'];
-            } elseif (is_null($data['keyword'])) {
-                $value_2 = $data['keyword'];
-            }
-            $object->setKeyword($value_2);
-        } elseif (\array_key_exists('keyword', $data) && $data['keyword'] === null) {
-            $object->setKeyword(null);
-        }
-        if (\array_key_exists('web', $data) && $data['web'] !== null) {
-            $value_3 = $data['web'];
-            if (is_string($data['web'])) {
-                $value_3 = $data['web'];
-            } elseif (is_null($data['web'])) {
-                $value_3 = $data['web'];
-            }
-            $object->setWeb($value_3);
-        } elseif (\array_key_exists('web', $data) && $data['web'] === null) {
-            $object->setWeb(null);
-        }
-        if (\array_key_exists('deleted', $data)) {
-            $object->setDeleted($data['deleted']);
-        }
-        if (\array_key_exists('created', $data)) {
-            $object->setCreated(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['created']));
-        }
-        if (\array_key_exists('modified', $data)) {
-            $object->setModified(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['modified']));
-        }
         if (\array_key_exists('oparlVersion', $data)) {
             $object->setOparlVersion($data['oparlVersion']);
         }
         if (\array_key_exists('otherOparlVersions', $data)) {
             $values = [];
-            foreach ($data['otherOparlVersions'] as $value_4) {
-                $values[] = $value_4;
+            foreach ($data['otherOparlVersions'] as $value) {
+                $values[] = $value;
             }
             $object->setOtherOparlVersions($values);
+        }
+        if (\array_key_exists('body', $data)) {
+            $object->setBody($data['body']);
+        }
+        if (\array_key_exists('contactEmail', $data)) {
+            $object->setContactEmail($data['contactEmail']);
+        }
+        if (\array_key_exists('contactName', $data)) {
+            $object->setContactName($data['contactName']);
+        }
+        if (\array_key_exists('website', $data)) {
+            $object->setWebsite($data['website']);
+        }
+        if (\array_key_exists('vendor', $data)) {
+            $object->setVendor($data['vendor']);
+        }
+        if (\array_key_exists('product', $data)) {
+            $object->setProduct($data['product']);
         }
 
         return $object;
@@ -126,58 +85,33 @@ class SystemNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        $value = $object->getShortName();
-        if (is_string($object->getShortName())) {
-            $value = $object->getShortName();
-        } elseif (is_null($object->getShortName())) {
-            $value = $object->getShortName();
-        }
-        $data['shortName'] = $value;
-        $value_1 = $object->getLicense();
-        if (is_string($object->getLicense())) {
-            $value_1 = $object->getLicense();
-        } elseif (is_null($object->getLicense())) {
-            $value_1 = $object->getLicense();
-        }
-        $data['license'] = $value_1;
-        $value_2 = $object->getKeyword();
-        if (is_string($object->getKeyword())) {
-            $value_2 = $object->getKeyword();
-        } elseif (is_null($object->getKeyword())) {
-            $value_2 = $object->getKeyword();
-        }
-        $data['keyword'] = $value_2;
-        $value_3 = $object->getWeb();
-        if (is_string($object->getWeb())) {
-            $value_3 = $object->getWeb();
-        } elseif (is_null($object->getWeb())) {
-            $value_3 = $object->getWeb();
-        }
-        $data['web'] = $value_3;
-        if (null !== $object->getDeleted()) {
-            $data['deleted'] = $object->getDeleted();
-        }
-        if (null !== $object->getCreated()) {
-            $data['created'] = $object->getCreated()->format('Y-m-d\\TH:i:sP');
-        }
-        if (null !== $object->getModified()) {
-            $data['modified'] = $object->getModified()->format('Y-m-d\\TH:i:sP');
-        }
         if (null !== $object->getOparlVersion()) {
             $data['oparlVersion'] = $object->getOparlVersion();
         }
         if (null !== $object->getOtherOparlVersions()) {
             $values = [];
-            foreach ($object->getOtherOparlVersions() as $value_4) {
-                $values[] = $value_4;
+            foreach ($object->getOtherOparlVersions() as $value) {
+                $values[] = $value;
             }
             $data['otherOparlVersions'] = $values;
+        }
+        if (null !== $object->getBody()) {
+            $data['body'] = $object->getBody();
+        }
+        if (null !== $object->getContactEmail()) {
+            $data['contactEmail'] = $object->getContactEmail();
+        }
+        if (null !== $object->getContactName()) {
+            $data['contactName'] = $object->getContactName();
+        }
+        if (null !== $object->getWebsite()) {
+            $data['website'] = $object->getWebsite();
+        }
+        if (null !== $object->getVendor()) {
+            $data['vendor'] = $object->getVendor();
+        }
+        if (null !== $object->getProduct()) {
+            $data['product'] = $object->getProduct();
         }
 
         return $data;
