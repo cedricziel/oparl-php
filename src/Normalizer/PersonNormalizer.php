@@ -37,6 +37,68 @@ class PersonNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('type', $data)) {
             $object->setType($data['type']);
         }
+        if (\array_key_exists('familyName', $data)) {
+            $object->setFamilyName($data['familyName']);
+        }
+        if (\array_key_exists('givenName', $data)) {
+            $object->setGivenName($data['givenName']);
+        }
+        if (\array_key_exists('formOfAddress', $data)) {
+            $object->setFormOfAddress($data['formOfAddress']);
+        }
+        if (\array_key_exists('affix', $data)) {
+            $object->setAffix($data['affix']);
+        }
+        if (\array_key_exists('title', $data)) {
+            $values = [];
+            foreach ($data['title'] as $value) {
+                $values[] = $value;
+            }
+            $object->setTitle($values);
+        }
+        if (\array_key_exists('gender', $data)) {
+            $object->setGender($data['gender']);
+        }
+        if (\array_key_exists('phone', $data)) {
+            $values_1 = [];
+            foreach ($data['phone'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setPhone($values_1);
+        }
+        if (\array_key_exists('email', $data)) {
+            $values_2 = [];
+            foreach ($data['email'] as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $object->setEmail($values_2);
+        }
+        if (\array_key_exists('location', $data)) {
+            $object->setLocation($data['location']);
+        }
+        if (\array_key_exists('locationObject', $data)) {
+            $object->setLocationObject($this->denormalizer->denormalize($data['locationObject'], 'OParl\\Model\\Location', 'json', $context));
+        }
+        if (\array_key_exists('status', $data)) {
+            $values_3 = [];
+            foreach ($data['status'] as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $object->setStatus($values_3);
+        }
+        if (\array_key_exists('membership', $data)) {
+            $values_4 = [];
+            foreach ($data['membership'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, 'OParl\\Model\\Membership', 'json', $context);
+            }
+            $object->setMembership($values_4);
+        }
+        if (\array_key_exists('life', $data)) {
+            $object->setLife($data['life']);
+        }
+        if (\array_key_exists('lifeSource', $data)) {
+            $object->setLifeSource($data['lifeSource']);
+        }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }
@@ -44,42 +106,42 @@ class PersonNormalizer implements DenormalizerInterface, NormalizerInterface, De
             $object->setName($data['name']);
         }
         if (\array_key_exists('shortName', $data) && $data['shortName'] !== null) {
-            $value = $data['shortName'];
+            $value_5 = $data['shortName'];
             if (\is_string($data['shortName'])) {
-                $value = $data['shortName'];
+                $value_5 = $data['shortName'];
             } elseif (null === $data['shortName']) {
-                $value = $data['shortName'];
+                $value_5 = $data['shortName'];
             }
-            $object->setShortName($value);
+            $object->setShortName($value_5);
         } elseif (\array_key_exists('shortName', $data) && $data['shortName'] === null) {
             $object->setShortName(null);
         }
         if (\array_key_exists('license', $data) && $data['license'] !== null) {
-            $value_1 = $data['license'];
+            $value_6 = $data['license'];
             if (\is_string($data['license'])) {
-                $value_1 = $data['license'];
+                $value_6 = $data['license'];
             } elseif (null === $data['license']) {
-                $value_1 = $data['license'];
+                $value_6 = $data['license'];
             }
-            $object->setLicense($value_1);
+            $object->setLicense($value_6);
         } elseif (\array_key_exists('license', $data) && $data['license'] === null) {
             $object->setLicense(null);
         }
         if (\array_key_exists('keyword', $data)) {
-            $values = [];
-            foreach ($data['keyword'] as $value_2) {
-                $values[] = $value_2;
+            $values_5 = [];
+            foreach ($data['keyword'] as $value_7) {
+                $values_5[] = $value_7;
             }
-            $object->setKeyword($values);
+            $object->setKeyword($values_5);
         }
         if (\array_key_exists('web', $data) && $data['web'] !== null) {
-            $value_3 = $data['web'];
+            $value_8 = $data['web'];
             if (\is_string($data['web'])) {
-                $value_3 = $data['web'];
+                $value_8 = $data['web'];
             } elseif (null === $data['web']) {
-                $value_3 = $data['web'];
+                $value_8 = $data['web'];
             }
-            $object->setWeb($value_3);
+            $object->setWeb($value_8);
         } elseif (\array_key_exists('web', $data) && $data['web'] === null) {
             $object->setWeb(null);
         }
@@ -102,40 +164,102 @@ class PersonNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
+        if (null !== $object->getFamilyName()) {
+            $data['familyName'] = $object->getFamilyName();
+        }
+        if (null !== $object->getGivenName()) {
+            $data['givenName'] = $object->getGivenName();
+        }
+        if (null !== $object->getFormOfAddress()) {
+            $data['formOfAddress'] = $object->getFormOfAddress();
+        }
+        if (null !== $object->getAffix()) {
+            $data['affix'] = $object->getAffix();
+        }
+        if (null !== $object->getTitle()) {
+            $values = [];
+            foreach ($object->getTitle() as $value) {
+                $values[] = $value;
+            }
+            $data['title'] = $values;
+        }
+        if (null !== $object->getGender()) {
+            $data['gender'] = $object->getGender();
+        }
+        if (null !== $object->getPhone()) {
+            $values_1 = [];
+            foreach ($object->getPhone() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['phone'] = $values_1;
+        }
+        if (null !== $object->getEmail()) {
+            $values_2 = [];
+            foreach ($object->getEmail() as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $data['email'] = $values_2;
+        }
+        if (null !== $object->getLocation()) {
+            $data['location'] = $object->getLocation();
+        }
+        if (null !== $object->getLocationObject()) {
+            $data['locationObject'] = $this->normalizer->normalize($object->getLocationObject(), 'json', $context);
+        }
+        if (null !== $object->getStatus()) {
+            $values_3 = [];
+            foreach ($object->getStatus() as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $data['status'] = $values_3;
+        }
+        if (null !== $object->getMembership()) {
+            $values_4 = [];
+            foreach ($object->getMembership() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+            }
+            $data['membership'] = $values_4;
+        }
+        if (null !== $object->getLife()) {
+            $data['life'] = $object->getLife();
+        }
+        if (null !== $object->getLifeSource()) {
+            $data['lifeSource'] = $object->getLifeSource();
+        }
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        $value = $object->getShortName();
+        $value_5 = $object->getShortName();
         if (\is_string($object->getShortName())) {
-            $value = $object->getShortName();
+            $value_5 = $object->getShortName();
         } elseif (null === $object->getShortName()) {
-            $value = $object->getShortName();
+            $value_5 = $object->getShortName();
         }
-        $data['shortName'] = $value;
-        $value_1 = $object->getLicense();
+        $data['shortName'] = $value_5;
+        $value_6 = $object->getLicense();
         if (\is_string($object->getLicense())) {
-            $value_1 = $object->getLicense();
+            $value_6 = $object->getLicense();
         } elseif (null === $object->getLicense()) {
-            $value_1 = $object->getLicense();
+            $value_6 = $object->getLicense();
         }
-        $data['license'] = $value_1;
+        $data['license'] = $value_6;
         if (null !== $object->getKeyword()) {
-            $values = [];
-            foreach ($object->getKeyword() as $value_2) {
-                $values[] = $value_2;
+            $values_5 = [];
+            foreach ($object->getKeyword() as $value_7) {
+                $values_5[] = $value_7;
             }
-            $data['keyword'] = $values;
+            $data['keyword'] = $values_5;
         }
-        $value_3 = $object->getWeb();
+        $value_8 = $object->getWeb();
         if (\is_string($object->getWeb())) {
-            $value_3 = $object->getWeb();
+            $value_8 = $object->getWeb();
         } elseif (null === $object->getWeb()) {
-            $value_3 = $object->getWeb();
+            $value_8 = $object->getWeb();
         }
-        $data['web'] = $value_3;
+        $data['web'] = $value_8;
         if (null !== $object->getDeleted()) {
             $data['deleted'] = $object->getDeleted();
         }

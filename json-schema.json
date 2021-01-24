@@ -521,6 +521,66 @@
         "type": {
           "type": "string",
           "default": "https://schema.oparl.org/1.1/Person"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "formOfAddress": {
+          "type": "string"
+        },
+        "affix": {
+          "type": "string"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gender": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "email": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "location": {
+          "type": "string",
+          "format": "uri"
+        },
+        "locationObject": {
+          "$ref": "#/definitions/Location"
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "membership": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Membership"
+          }
+        },
+        "life": {
+          "type": "string"
+        },
+        "lifeSource": {
+          "type": "string",
+          "format": "uri"
         }
       }
     },

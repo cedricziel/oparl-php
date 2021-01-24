@@ -13,6 +13,10 @@ namespace OParl\Model;
 class Person
 {
     /**
+     * @var string
+     */
+    protected $affix;
+    /**
      * @var \DateTime
      */
     protected $created;
@@ -20,6 +24,26 @@ class Person
      * @var bool
      */
     protected $deleted = false;
+    /**
+     * @var string[]
+     */
+    protected $email;
+    /**
+     * @var string
+     */
+    protected $familyName;
+    /**
+     * @var string
+     */
+    protected $formOfAddress;
+    /**
+     * @var string
+     */
+    protected $gender;
+    /**
+     * @var string
+     */
+    protected $givenName;
     /**
      * Every object *must* carry a URL as ID.
      *
@@ -35,6 +59,26 @@ class Person
      */
     protected $license;
     /**
+     * @var string
+     */
+    protected $life;
+    /**
+     * @var string
+     */
+    protected $lifeSource;
+    /**
+     * @var string
+     */
+    protected $location;
+    /**
+     * @var Location
+     */
+    protected $locationObject;
+    /**
+     * @var Membership[]
+     */
+    protected $membership;
+    /**
      * @var \DateTime
      */
     protected $modified;
@@ -45,9 +89,21 @@ class Person
      */
     protected $name;
     /**
+     * @var string[]
+     */
+    protected $phone;
+    /**
      * @var string|null
      */
     protected $shortName;
+    /**
+     * @var string[]
+     */
+    protected $status;
+    /**
+     * @var string[]
+     */
+    protected $title;
     /**
      * @var string
      */
@@ -57,6 +113,11 @@ class Person
      */
     protected $web;
 
+    public function getAffix(): string
+    {
+        return $this->affix;
+    }
+
     public function getCreated(): \DateTime
     {
         return $this->created;
@@ -65,6 +126,34 @@ class Person
     public function getDeleted(): bool
     {
         return $this->deleted;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getEmail(): array
+    {
+        return $this->email;
+    }
+
+    public function getFamilyName(): string
+    {
+        return $this->familyName;
+    }
+
+    public function getFormOfAddress(): string
+    {
+        return $this->formOfAddress;
+    }
+
+    public function getGender(): string
+    {
+        return $this->gender;
+    }
+
+    public function getGivenName(): string
+    {
+        return $this->givenName;
     }
 
     /**
@@ -88,6 +177,34 @@ class Person
         return $this->license;
     }
 
+    public function getLife(): string
+    {
+        return $this->life;
+    }
+
+    public function getLifeSource(): string
+    {
+        return $this->lifeSource;
+    }
+
+    public function getLocation(): string
+    {
+        return $this->location;
+    }
+
+    public function getLocationObject(): Location
+    {
+        return $this->locationObject;
+    }
+
+    /**
+     * @return Membership[]
+     */
+    public function getMembership(): array
+    {
+        return $this->membership;
+    }
+
     public function getModified(): \DateTime
     {
         return $this->modified;
@@ -101,9 +218,33 @@ class Person
         return $this->name;
     }
 
+    /**
+     * @return string[]
+     */
+    public function getPhone(): array
+    {
+        return $this->phone;
+    }
+
     public function getShortName(): ?string
     {
         return $this->shortName;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getStatus(): array
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getTitle(): array
+    {
+        return $this->title;
     }
 
     public function getType(): string
@@ -116,6 +257,13 @@ class Person
         return $this->web;
     }
 
+    public function setAffix(string $affix): self
+    {
+        $this->affix = $affix;
+
+        return $this;
+    }
+
     public function setCreated(\DateTime $created): self
     {
         $this->created = $created;
@@ -126,6 +274,44 @@ class Person
     public function setDeleted(bool $deleted): self
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * @param string[] $email
+     */
+    public function setEmail(array $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function setFamilyName(string $familyName): self
+    {
+        $this->familyName = $familyName;
+
+        return $this;
+    }
+
+    public function setFormOfAddress(string $formOfAddress): self
+    {
+        $this->formOfAddress = $formOfAddress;
+
+        return $this;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function setGivenName(string $givenName): self
+    {
+        $this->givenName = $givenName;
 
         return $this;
     }
@@ -157,6 +343,44 @@ class Person
         return $this;
     }
 
+    public function setLife(string $life): self
+    {
+        $this->life = $life;
+
+        return $this;
+    }
+
+    public function setLifeSource(string $lifeSource): self
+    {
+        $this->lifeSource = $lifeSource;
+
+        return $this;
+    }
+
+    public function setLocation(string $location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    public function setLocationObject(Location $locationObject): self
+    {
+        $this->locationObject = $locationObject;
+
+        return $this;
+    }
+
+    /**
+     * @param Membership[] $membership
+     */
+    public function setMembership(array $membership): self
+    {
+        $this->membership = $membership;
+
+        return $this;
+    }
+
     public function setModified(\DateTime $modified): self
     {
         $this->modified = $modified;
@@ -174,9 +398,39 @@ class Person
         return $this;
     }
 
+    /**
+     * @param string[] $phone
+     */
+    public function setPhone(array $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
     public function setShortName(?string $shortName): self
     {
         $this->shortName = $shortName;
+
+        return $this;
+    }
+
+    /**
+     * @param string[] $status
+     */
+    public function setStatus(array $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @param string[] $title
+     */
+    public function setTitle(array $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }
